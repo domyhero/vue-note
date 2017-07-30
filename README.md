@@ -7,4 +7,4 @@
 
 ### vuex篇
 
-请点击[这里]()查看！
+请点击[这里](https://github.com/woai30231/vue-note/tree/master/vuex)查看！

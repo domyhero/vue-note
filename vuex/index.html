@@ -5,9 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>vuex demo</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
     <script src="https://cdn.bootcss.com/vuex/2.3.1/vuex.min.js"></script>
 </head>
 <body>
-    
+    <div id="app"></div>
+    <script type="text/javascript">
+        var store = {
+            state:{
+                count:0
+            },
+            mutations:{
+                addCount:function(state){
+                    state.count++;
+                    console.log(state.count);
+                },
+                diffCount:function(state){
+                    state.count--;
+                    console.log(state.count);
+                }
+            },
+            actions:{
+                asynAddCount:function(store){
+                    setTimeout(()=>{
+                        store.commit('addCount');
+                    },0);
+                },
+                asynDiffCount:function(store){
+                    setTimeout(()=>{
+                        store.commit('diffCount');
+                    },0);
+                }
+            }
+        };
+        
+        var Store = Vuex.Store(store);
+        Vue.use(Vuex);
+        Vue({
+            el:'#app',
+            store:Store,
+            mounted:function(){
+                this.$store.commit('addCount');
+                this.$store.commit('diffCount');
+                this.$store.dispatch('asynAddCount');
+                this.$store.dispatch('asynDiffCount');
+            }
+        });
+        
+    </script>
 </body>
 </html>
