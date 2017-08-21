@@ -7,7 +7,7 @@
 
 ### [vuex篇](https://github.com/woai30231/vue-note/tree/master/vuex)
 
-### [vue-router篇](https://github.com/woai30231/vue-note/tree/master/vuex)
+### [vue-router篇](https://github.com/woai30231/vue-note/tree/master/vue-router)
 
 ### [如何用vue组织你的单页面程序](https://github.com/woai30231/vue-note/tree/master/components)
 
