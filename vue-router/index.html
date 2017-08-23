@@ -6,10 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue-router demo</title>
 
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/2.7.0/vue-router.js"></script>
 </head>
 <body>
+    <div id="app">
     
+        <ul>
+            <li><router-link to="list1">list1</router-link></li>
+            <li><router-link to="list2">list2</router-link></li>
+        </ul>
+        <router-view></router-view>
+    </div>
+<script type="text/javascript">
+//这里配置相关用到的组件
+var List1 = {template:'<div>this is list1 page!</div>'};
+var List2 = {template:'<div>this is list2 page!</div>'};
+//设置路由映射
+var router = new VueRouter({
+    mode:'hash',//这里主要设置路由的模式，主要分为hash模式和h5模式,因为我们在本地查看demo,所以请不要设置history模式，否则会报错
+    //下面的routes的值是个数组，主要配置每个路由所对应的的组件名字，其实你明白了其实一个路由就是对应的一个组件，你这样就好理解了
+    routes:[
+        {
+            path:'/list1',
+            name:'list1',
+            component:List1
+        },
+        {
+            path:'/list2',
+            name:'list2',
+            component:List2
+        },
+        //这一项配置，默认路由，也就是页面刚进来的时候，会默认进入的下一个页面
+        {
+            path:'',
+            redirect:'/list2'
+        },
+        //下面一项用于配置，你跳转到一个没有对应的路由映射的时候页面会映射List1组件
+        {
+            path:'*',
+            //name:'list1',
+            component:List1
+        }
+    ]
+});
+
+//启动app
+new Vue({
+    el:'#app',
+    router:router
+});
+</script>
 </body>
 </html>
